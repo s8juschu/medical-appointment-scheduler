@@ -1,0 +1,307 @@
+<div id="wrapper">
+  <app-sidebar></app-sidebar>
+
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+    <!-- Main Content -->
+    <div id="content">
+      <app-topbar></app-topbar>
+      <!-- Begin Page Content -->
+      <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="row">
+          <div class="col-sm-10">
+            <div
+              class="d-sm-flex align-items-center justify-content-between mb-4"
+            >
+              <h1 class="h3 mb-0 text-gray-800">Anschreiben</h1>
+            </div>
+          </div>
+        </div>
+        <br />
+
+        <div class="row">
+          <div class="col-sm-10">
+            <div class="row">
+              <div class="col-sm-8">
+                <div class="row form-group">
+                  <label for="staticName" class="col-sm-2 col-form-label">
+                    <b>Name</b>
+                  </label>
+                  <div class="col-sm-10">
+                    <input
+                      #nameInput
+                      type="text"
+                      class="form-control"
+                      id="staticVorname"
+                      [value]="template.name ? template.name : ''"
+                      (change)="template.name = nameInput.value"
+                      required
+                      [disabled]="!templateMode"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-sm-8">
+                <div class="row">
+                  <label for="staticName" class="col-sm-2 col-form-label">
+                    <b>Beschreibung</b>
+                  </label>
+                  <div class="col-sm-10">
+                    <textarea
+                      #descriptionInput
+                      type="text"
+                      class="form-control"
+                      id="staticDescription"
+                      [value]="template.description ? template.description : ''"
+                      (change)="template.description = descriptionInput.value"
+                      required
+                      [disabled]="!templateMode"
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-8">
+                <div>
+                  <ckeditor
+                    #editor
+                    [editor]="Editor"
+                    [config]="{ removePlugins: ['Autoformat'] }"
+                    [(ngModel)]="this.template.template_body"
+                  >
+                  </ckeditor>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div>
+              <button
+                type="button"
+                class="btn btn-success buttonSave"
+                (click)="saveModal(saveContent)"
+                id="verwaltenSave"
+                *ngIf="templateMode"
+              >
+                Speichern
+              </button>
+              <br />
+              <button
+                type="button"
+                class="btn btn-danger buttonDelete"
+                (click)="deleteModal(deleteContent)"
+                id="verwaltenDelete"
+                *ngIf="templateMode"
+              >
+                Löschen
+              </button>
+              <br />
+              <button
+                type="button"
+                class="btn btn-primary buttonDelete"
+                (click)="helpModal(helpContent)"
+                id="verwaltenHelp"
+                *ngIf="templateMode"
+              >
+                Hilfe
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-secondary buttonVerwaltung"
+                (click)="pdfModal(pdfContent)"
+                id="verwaltenArchivieren"
+                *ngIf="!templateMode"
+              >
+                PDF
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <br />
+      </div>
+    </div>
+
+    <!-- /.container-fluid -->
+  </div>
+  <!-- End of Main Content -->
+</div>
+
+<ng-template #saveContent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-title-save">Vorlage speichern</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      id="verwaltenModalSaveCross"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Wollen Sie diese Vorlage speichern?</p>
+  </div>
+  <div class="modal-footer">
+    <button
+      id="verwaltenModalSaveNein"
+      type="button"
+      class="btn btn-sm btn-outline-danger"
+      (click)="modal.dismiss('Cross click')"
+    >
+      Nein
+    </button>
+    <button
+      id="verwaltenModalSaveJa"
+      type="button"
+      ngbAutofocus
+      class="btn btn-sm btn-outline-success"
+      (click)="modal.close()"
+    >
+      Ja
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #deleteContent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-title-save">Vorlage löschen</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      id="verwaltenModalSaveCross"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Wollen Sie diese Vorlage löschen?</p>
+  </div>
+  <div class="modal-footer">
+    <button
+      id="verwaltenModalSaveNein"
+      type="button"
+      class="btn btn-sm btn-outline-danger"
+      (click)="modal.dismiss('Cross click')"
+    >
+      Nein
+    </button>
+    <button
+      id="verwaltenModalSaveJa"
+      type="button"
+      ngbAutofocus
+      class="btn btn-sm btn-outline-success"
+      (click)="modal.close()"
+    >
+      Ja
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #pdfContent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-title-save">PDF herunterladen</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      id="verwaltenModalSaveCross"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Wollen Sie dieses Anschreiben zum Verschicken herunterladen?</p>
+  </div>
+  <div class="modal-footer">
+    <button
+      id="pdfModalSaveNein"
+      type="button"
+      class="btn btn-sm btn-outline-danger"
+      (click)="modal.dismiss('Cross click')"
+    >
+      Nein
+    </button>
+    <button
+      id="pdfModalSaveJa"
+      type="button"
+      ngbAutofocus
+      class="btn btn-sm btn-outline-success"
+      (click)="modal.close()"
+    >
+      Ja
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #helpContent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-title-help">
+      Hilfe zur Erstellung von Anschreiben
+    </h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      id="verwaltenModalHelpCross"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>
+      Vorname: <code ngNonBindable>{{ first_name }}</code>
+    </p>
+    <p>
+      Nachname: <code ngNonBindable>{{ last_name }}</code>
+    </p>
+    <p>
+      Personalnummer: <code ngNonBindable>{{ employee_id }}</code>
+    </p>
+    <p>
+      Geburtsdatum: <code ngNonBindable>{{ date_of_birth }}</code>
+    </p>
+    <p>
+      Eintrittsdatum: <code ngNonBindable>{{ date_of_entry }}</code>
+    </p>
+    <p>
+      Austrittsdatum: <code ngNonBindable>{{ date_of_exit }}</code>
+    </p>
+    <p>
+      Turnus: <code ngNonBindable>{{ reminder_interval }}</code>
+    </p>
+    <p>
+      Erinnerung erwünscht: <code ngNonBindable>{{ wants_reminder }}</code>
+    </p>
+    <p>
+      Nächste Erinnerung: <code ngNonBindable>{{ next_reminder }}</code>
+    </p>
+    <p>
+      Anmerkungen: <code ngNonBindable>{{ notes }}</code>
+    </p>
+    <p>
+      Geschlecht: <code ngNonBindable>{{ gender }}</code>
+    </p>
+  </div>
+  <div class="modal-footer">
+    <button
+      id="pdfModalHelpJa"
+      type="button"
+      ngbAutofocus
+      class="btn btn-sm btn-outline-primary"
+      (click)="modal.close()"
+    >
+      Schließen
+    </button>
+  </div>
+</ng-template>

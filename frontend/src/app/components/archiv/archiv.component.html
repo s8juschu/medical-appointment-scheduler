@@ -1,0 +1,194 @@
+<div id="wrapper">
+  <app-sidebar></app-sidebar>
+
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+    <app-topbar></app-topbar>
+    <!-- Main Content -->
+    <div id="content">
+      <!-- Begin Page Content -->
+      <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="row">
+          <div class="col-sm-10">
+            <div
+              class="d-sm-flex align-items-center justify-content-between mb-4"
+            >
+              <h1 class="h3 mb-0 text-gray-800">
+                Archivierte Mitarbeitereinträge
+              </h1>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <form
+              style="float: right"
+              class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
+            >
+              <div class="input-group">
+                <div class="form-group row">
+                  <div class="col-sm-8">
+                    <div
+                      ngbDropdown
+                      class="d-inline-block input-group-btn search-panel"
+                    >
+                      <button
+                        class="btn btn-outline-primary dropdown-toggle filter"
+                        id="dropdownBasic1"
+                        ngbDropdownToggle
+                      >
+                        {{ selectedValue }}<span class="caret"></span>
+                      </button>
+                      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <button
+                          ngbDropdownItem
+                          (click)="
+                            changeDropdownName('Vorname');
+                            selectedFilter = 'firstname';
+                            searchInput.focus()
+                          "
+                        >
+                          Vorname
+                        </button>
+                        <button
+                          ngbDropdownItem
+                          (click)="
+                            changeDropdownName('Nachname');
+                            selectedFilter = 'lastname';
+                            searchInput.focus()
+                          "
+                        >
+                          Nachname
+                        </button>
+                        <button
+                          ngbDropdownItem
+                          (click)="
+                            changeDropdownName('Pers.Nr.');
+                            selectedFilter = 'e_id';
+                            searchInput.focus()
+                          "
+                        >
+                          Personalnummer
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <input
+                  #searchInput
+                  id="archivSearchIn"
+                  type="text"
+                  class="form-control bg-light small"
+                  placeholder="Suche ..."
+                  aria-label="Search"
+                  aria-describedby="basic-addon2"
+                  (keyup.enter)="search(searchInput.value)"
+                />
+                <div class="input-group-append">
+                  <button
+                    class="btn btn-primary"
+                    type="button"
+                    id="archivSearch"
+                    (click)="search(searchInput.value)"
+                  >
+                    <fa-icon [icon]="faSearch" class="fa-sm fas"></fa-icon>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <br />
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Pers. Nr.</th>
+              <th>Vorname</th>
+              <th>Nachname</th>
+              <th>Geburtsdatum</th>
+              <th>Austrittsdatum</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let employee of displayedArchivedEmployees"
+              class="employeeRow"
+            >
+              <th (click)="loadDetailedView(employee.id)" scope="row">
+                {{ employee.employee_id }}
+              </th>
+              <td (click)="loadDetailedView(employee.id)">
+                {{ employee.first_name }}
+              </td>
+              <td (click)="loadDetailedView(employee.id)">
+                {{ employee.last_name }}
+              </td>
+              <td (click)="loadDetailedView(employee.id)">
+                {{ employee.date_of_birth }}
+              </td>
+              <td (click)="loadDetailedView(employee.id)">
+                {{ employee.date_of_exit }}
+              </td>
+              <td>
+                <button
+                  (click)="
+                    dearchiveModal(dearchiveContent, { id: employee.id })
+                  "
+                  class="btn btn-secondary buttonDearchive"
+                  id="archiveDearchive"
+                  type="button"
+                >
+                  Wiederherstellen
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- /.container-fluid -->
+  </div>
+  <!-- End of Main Content -->
+</div>
+
+<ng-template #dearchiveContent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-title-dearchive">
+      Mitarbeiter wiederherstellen
+    </h4>
+    <button
+      id="verwaltenModalDeArchCross"
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Wollen Sie diesen Mitarbeiter wiederherstellen?</p>
+  </div>
+  <div class="modal-footer">
+    <button
+      id="verwaltenModalDeArchNein"
+      type="button"
+      class="btn btn-sm btn-outline-danger"
+      (click)="modal.dismiss('Cross click')"
+    >
+      Nein
+    </button>
+    <button
+      id="verwaltenModalDeArchJa"
+      type="button"
+      ngbAutofocus
+      class="btn btn-sm btn-outline-success"
+      (click)="modal.close('Save click')"
+    >
+      Ja
+    </button>
+  </div>
+</ng-template>

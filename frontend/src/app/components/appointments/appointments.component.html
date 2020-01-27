@@ -1,0 +1,422 @@
+<div id="wrapper">
+  <app-sidebar></app-sidebar>
+
+  <div id="content-wrapper" class="d-flex flex-column">
+    <!-- Main Content -->
+    <div id="content">
+      <app-topbar></app-topbar>
+      <!-- Begin Page Content -->
+      <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="row">
+          <div class="col-sm-10">
+            <div
+              class="d-sm-flex align-items-center justify-content-between mb-4"
+            >
+              <h1 class="h3 mb-0 text-gray-800">Alle Termine</h1>
+            </div>
+          </div>
+        </div>
+
+        <h4 class="h_center">
+          <div class="row">
+            <button
+              type="button"
+              class="btn btn-default btn-light large_btn"
+              (click)="dec()"
+            >
+              <fa-icon
+                [icon]="faAngleLeft"
+                class="fa-sm fas"
+                id="btnLeft"
+              ></fa-icon>
+            </button>
+            <p class="center_h">{{ anio }}</p>
+            <button
+              type="button"
+              class="btn btn-default btn-light large_btn"
+              (click)="inc()"
+            >
+              <fa-icon
+                [icon]="faAngleRight"
+                class="fa-sm fas"
+                id="btnRight"
+              ></fa-icon>
+            </button>
+          </div>
+        </h4>
+
+        <div class="row">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Januar</h5>
+              <hr />
+              <p class="card-text">
+                <tr
+                  *ngFor="let appointment of displayedAppointmentsPerMonth[0]"
+                >
+                  <td>{{ appointment.date }}</td>
+                  <td>{{ getEmployeeNameById(appointment.employee) }}</td>
+                  <td>
+                    <fa-icon
+                      (click)="deleteAppointment(deleteTermin, appointment.id)"
+                      id="deleteAppointment"
+                      [icon]="faTimes"
+                      class="buttonDelete fa-sm"
+                    ></fa-icon>
+                    <fa-icon
+                      [icon]="faEdit"
+                      class="buttonEdit fa-sm"
+                      (click)="loadDetailedView(appointment.employee)"
+                    ></fa-icon>
+                  </td>
+                </tr>
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Februar</h5>
+              <hr />
+              <p class="card-text">
+                <tr
+                  *ngFor="let appointment of displayedAppointmentsPerMonth[1]"
+                >
+                  <td>{{ appointment.date }}</td>
+                  <td>{{ getEmployeeNameById(appointment.employee) }}</td>
+                  <td>
+                    <fa-icon
+                      (click)="deleteAppointment(deleteTermin, appointment.id)"
+                      id="deleteAppointment"
+                      [icon]="faTimes"
+                      class="buttonDelete fa-sm"
+                    ></fa-icon>
+                    <fa-icon
+                      [icon]="faEdit"
+                      class="buttonEdit fa-sm"
+                      (click)="loadDetailedView(appointment.employee)"
+                    ></fa-icon>
+                  </td>
+                </tr>
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">März</h5>
+              <hr />
+              <p class="card-text">
+                <tr
+                  *ngFor="let appointment of displayedAppointmentsPerMonth[2]"
+                >
+                  <td>{{ appointment.date }}</td>
+                  <td>{{ getEmployeeNameById(appointment.employee) }}</td>
+                  <td>
+                    <fa-icon
+                      (click)="deleteAppointment(deleteTermin, appointment.id)"
+                      id="deleteAppointment"
+                      [icon]="faTimes"
+                      class="buttonDelete fa-sm"
+                    ></fa-icon>
+                    <fa-icon
+                      [icon]="faEdit"
+                      class="buttonEdit fa-sm"
+                      (click)="loadDetailedView(appointment.employee)"
+                    ></fa-icon>
+                  </td>
+                </tr>
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">April</h5>
+              <hr />
+              <p class="card-text">
+                <tr
+                  *ngFor="let appointment of displayedAppointmentsPerMonth[3]"
+                >
+                  <td>{{ appointment.date }}</td>
+                  <td>{{ getEmployeeNameById(appointment.employee) }}</td>
+                  <td>
+                    <fa-icon
+                      (click)="deleteAppointment(deleteTermin, appointment.id)"
+                      id="deleteAppointment"
+                      [icon]="faTimes"
+                      class="buttonDelete fa-sm"
+                    ></fa-icon>
+                    <fa-icon
+                      [icon]="faEdit"
+                      class="buttonEdit fa-sm"
+                      (click)="loadDetailedView(appointment.employee)"
+                    ></fa-icon>
+                  </td>
+                </tr>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Mai</h5>
+              <hr />
+              <p class="card-text">
+                <tr
+                  *ngFor="let appointment of displayedAppointmentsPerMonth[4]"
+                >
+                  <td>{{ appointment.date }}</td>
+                  <td>{{ getEmployeeNameById(appointment.employee) }}</td>
+                  <td>
+                    <fa-icon
+                      (click)="deleteAppointment(deleteTermin, appointment.id)"
+                      id="deleteAppointment"
+                      [icon]="faTimes"
+                      class="buttonDelete fa-sm"
+                    ></fa-icon>
+                    <fa-icon
+                      [icon]="faEdit"
+                      class="buttonEdit fa-sm"
+                      (click)="loadDetailedView(appointment.employee)"
+                    ></fa-icon>
+                  </td>
+                </tr>
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Juni</h5>
+              <hr />
+              <p class="card-text">
+                <tr
+                  *ngFor="let appointment of displayedAppointmentsPerMonth[5]"
+                >
+                  <td>{{ appointment.date }}</td>
+                  <td>{{ getEmployeeNameById(appointment.employee) }}</td>
+                  <td>
+                    <fa-icon
+                      (click)="deleteAppointment(deleteTermin, appointment.id)"
+                      id="deleteAppointment"
+                      [icon]="faTimes"
+                      class="buttonDelete fa-sm"
+                    ></fa-icon>
+                    <fa-icon
+                      [icon]="faEdit"
+                      class="buttonEdit fa-sm"
+                      (click)="loadDetailedView(appointment.employee)"
+                    ></fa-icon>
+                  </td>
+                </tr>
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Juli</h5>
+              <hr />
+              <p class="card-text">
+                <tr
+                  *ngFor="let appointment of displayedAppointmentsPerMonth[6]"
+                >
+                  <td>{{ appointment.date }}</td>
+                  <td>{{ getEmployeeNameById(appointment.employee) }}</td>
+                  <td>
+                    <fa-icon
+                      (click)="deleteAppointment(deleteTermin, appointment.id)"
+                      id="deleteAppointment"
+                      [icon]="faTimes"
+                      class="buttonDelete fa-sm"
+                    ></fa-icon>
+                    <fa-icon
+                      [icon]="faEdit"
+                      class="buttonEdit fa-sm"
+                      (click)="loadDetailedView(appointment.employee)"
+                    ></fa-icon>
+                  </td>
+                </tr>
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">August</h5>
+              <hr />
+              <p class="card-text">
+                <tr
+                  *ngFor="let appointment of displayedAppointmentsPerMonth[7]"
+                >
+                  <td>{{ appointment.date }}</td>
+                  <td>{{ getEmployeeNameById(appointment.employee) }}</td>
+                  <td>
+                    <fa-icon
+                      (click)="deleteAppointment(deleteTermin, appointment.id)"
+                      id="deleteAppointment"
+                      [icon]="faTimes"
+                      class="buttonDelete fa-sm"
+                    ></fa-icon>
+                    <fa-icon
+                      [icon]="faEdit"
+                      class="buttonEdit fa-sm"
+                      (click)="loadDetailedView(appointment.employee)"
+                    ></fa-icon>
+                  </td>
+                </tr>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">September</h5>
+              <hr />
+              <p class="card-text">
+                <tr
+                  *ngFor="let appointment of displayedAppointmentsPerMonth[8]"
+                >
+                  <td>{{ appointment.date }}</td>
+                  <td>{{ getEmployeeNameById(appointment.employee) }}</td>
+                  <td>
+                    <fa-icon
+                      (click)="deleteAppointment(deleteTermin, appointment.id)"
+                      id="deleteAppointment"
+                      [icon]="faTimes"
+                      class="buttonDelete fa-sm"
+                    ></fa-icon>
+                    <fa-icon
+                      [icon]="faEdit"
+                      class="buttonEdit fa-sm"
+                      (click)="loadDetailedView(appointment.employee)"
+                    ></fa-icon>
+                  </td>
+                </tr>
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Oktober</h5>
+              <hr />
+              <p class="card-text">
+                <tr
+                  *ngFor="let appointment of displayedAppointmentsPerMonth[9]"
+                >
+                  <td>{{ appointment.date }}</td>
+                  <td>{{ getEmployeeNameById(appointment.employee) }}</td>
+                  <td>
+                    <fa-icon
+                      (click)="deleteAppointment(deleteTermin, appointment.id)"
+                      id="deleteAppointment"
+                      [icon]="faTimes"
+                      class="buttonDelete fa-sm"
+                    ></fa-icon>
+                    <fa-icon
+                      [icon]="faEdit"
+                      class="buttonEdit fa-sm"
+                      (click)="loadDetailedView(appointment.employee)"
+                    ></fa-icon>
+                  </td>
+                </tr>
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">November</h5>
+              <hr />
+              <p class="card-text">
+                <tr
+                  *ngFor="let appointment of displayedAppointmentsPerMonth[10]"
+                >
+                  <td>{{ appointment.date }}</td>
+                  <td>{{ getEmployeeNameById(appointment.employee) }}</td>
+                  <td>
+                    <fa-icon
+                      (click)="deleteAppointment(deleteTermin, appointment.id)"
+                      id="deleteAppointment"
+                      [icon]="faTimes"
+                      class="buttonDelete fa-sm"
+                    ></fa-icon>
+                    <fa-icon
+                      [icon]="faEdit"
+                      class="buttonEdit fa-sm"
+                      (click)="loadDetailedView(appointment.employee)"
+                    ></fa-icon>
+                  </td>
+                </tr>
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Dezember</h5>
+              <hr />
+              <p class="card-text">
+                <tr
+                  *ngFor="let appointment of displayedAppointmentsPerMonth[11]"
+                >
+                  <td>{{ appointment.date }}</td>
+                  <td>{{ getEmployeeNameById(appointment.employee) }}</td>
+                  <td>
+                    <fa-icon
+                      (click)="deleteAppointment(deleteTermin, appointment.id)"
+                      id="deleteAppointment"
+                      [icon]="faTimes"
+                      class="buttonDelete fa-sm"
+                    ></fa-icon>
+                    <fa-icon
+                      [icon]="faEdit"
+                      class="buttonEdit fa-sm"
+                      (click)="loadDetailedView(appointment.employee)"
+                    ></fa-icon>
+                  </td>
+                </tr>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- /.container-fluid -->
+      </div>
+      <!-- End of Main Content -->
+    </div>
+  </div>
+</div>
+
+<ng-template #deleteTermin let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-title-deleteTermin">Termin löschen</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      id="terminModalDeleteTerminCross"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Wollen Sie diesen Termin löschen?</p>
+  </div>
+  <div class="modal-footer">
+    <button
+      id="terminModalDeleteTerminNein"
+      type="button"
+      ngbAutofocus
+      class="btn btn-sm btn-outline-danger"
+      (click)="modal.dismiss('Cross click')"
+    >
+      Nein
+    </button>
+    <button
+      id="terminModalDeleteTerminJa"
+      type="button"
+      class="btn btn-sm btn-outline-success"
+      (click)="modal.close()"
+    >
+      Ja
+    </button>
+  </div>
+</ng-template>

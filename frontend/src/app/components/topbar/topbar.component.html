@@ -1,0 +1,33 @@
+<!-- Topbar -->
+<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+  <!-- Sidebar Toggle (Topbar) -->
+  <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+    <fa-icon [icon]="faBars" class="fa"></fa-icon>
+  </button>
+
+  <!-- Topbar Navbar -->
+  <ul class="navbar-nav ml-auto">
+    <!-- Nav Item - User Information -->
+    <li ngbDropdown class="nav-item dropdown no-arrow">
+      <a class="nav-link dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false" ngbDropdownToggle>
+        <img class="img-profile rounded-circle" src="assets/img/user.png" />
+      </a>
+      <!-- Dropdown - User Information -->
+      <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown"
+        ngbDropdownMenu>
+        <!--        <a ngbDropdownItem class="dropdown-item" routerLink="/account" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" id="navSetting" href="#">-->
+        <a ngbDropdownItem class="dropdown-item" href="http://127.0.0.1:8000/admin" id="navManage">
+          <fa-icon [icon]="faCogs" class="fas fa-sm fa-fw mr-2 text-gray-400"></fa-icon>
+          Settings
+        </a>
+        <div class="dropdown-divider"></div>
+        <button class="dropdown-item" id="logoutBtn" data-toggle="modal" data-target="#logoutModal" ngbDropdownItem (click)="logout()">
+          <fa-icon [icon]="faSignOutAlt" class="fas fa-sm fa-fw mr-2 text-gray-400"></fa-icon>
+          Logout
+        </button>
+      </div>
+    </li>
+  </ul>
+</nav>
+<!-- End of Topbar -->

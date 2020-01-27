@@ -1,0 +1,19 @@
+.bg-gradient-primary{
+    color: #1761ab !important;
+}
+
+.buttonVerwaltung{
+    width: 108px;
+    margin-top: 5px;
+}
+
+.kalendermonat{
+    width: 200px;
+    height: 200px;
+    border: 1px #1761ab solid;
+}
+
+.buttonAnschreiben{
+    width: 150px;
+    margin-top: 5px;
+}

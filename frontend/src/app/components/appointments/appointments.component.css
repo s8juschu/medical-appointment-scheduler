@@ -1,0 +1,48 @@
+.example-card {
+  max-width: 400px;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+.h_center{
+
+  /*margin-left: 31rem;*/
+  margin-left: 46.5%;
+}
+
+.large_btn{
+   font-size: 25px;
+   color: #858796 ;
+}
+
+.center_h{
+  margin-top: 1rem;
+}
+.card{
+  width: 100%;
+  min-width: 286px !important;
+  max-width: 25% !important;
+}
+
+.buttonDelete{
+  color: #e02d1b;
+  width: 50%;
+  padding-left: 0.5rem;
+}
+
+.buttonEdit{
+  color:#2c9faf;
+  padding-left: 0.3rem;
+}
+
+.buttonEdit:hover{
+  color:#858796;
+}
+
+.buttonDelete:hover{
+  color:#858796;
+}
+

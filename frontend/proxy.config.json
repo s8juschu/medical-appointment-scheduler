@@ -1,0 +1,30 @@
+{
+  "/employees/": {
+    "target": "http://127.0.0.1:8000/",
+    "secure": false
+  },
+  "/appointments/": {
+    "target": "http://127.0.0.1:8000/",
+    "secure": false
+  },
+  "/rest-auth/login/": {
+    "target": "http://127.0.0.1:8000/",
+    "secure": false
+  },
+  "/api-auth/logout/": {
+    "target": "http://127.0.0.1:8000/",
+    "secure": false
+  },
+  "/departments/": {
+    "target": "http://127.0.0.1:8000/",
+    "secure": false
+  },
+  "/templates/": {
+    "target": "http://127.0.0.1:8000/",
+    "secure": false
+  },
+  "/api-auth/": {
+    "target": "http://127.0.0.1:8000/",
+    "secure": false
+  }
+}

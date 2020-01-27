@@ -1,0 +1,21 @@
+<p>PERSÖNLICH/PERSONALSACHE</p>
+<p>{% if employee.gender == "männlich" %} Herr {% else %} Frau {% endif %} {{ employee.first_name }}
+  {{ employee.last_name }}&nbsp;<br>Abteilung: {{ employee.department }}</p>
+<p>Datum: {{ today | date:"d.m.Y" }}&nbsp;<br><br><br>&nbsp;</p>
+<h2>Betreff: Termin für ein arbeitsmedizinische Nachuntersuchung</h2>
+<p><br><br>&nbsp;</p>
+<p>Sehr {% if employee.gender == "männlich" %} geehrter Herr {% else %} geehrte Frau {% endif %}
+  {{ employee.last_name }},&nbsp;<br>&nbsp;</p>
+<p>aufgrund Ihrer dienstlichen Tätigkeiten ist eine arbeitsmedizinische Vorsorgeuntersuchung erforderlich. Diese
+  Untersuchung dient insbesondere Ihrer Gesundheitsvorsorge und ist u.a. nach den Unfallverhütungsvorschriften bzw. der
+  Bildschirmarbeitsplatzverordung vorgeschrieben.</p>
+<p>Die arbeitsmedizinische Untersuchung und Beratung wird vom Betriebarzt, Herrn Prof. Dr. Lothar Schwarz, durchgeführt.
+  Die Inhalte und Ergebnisse obliegen selbstversändlich der Schweigepflicht.</p>
+<p>Wir bitten Sie, einen <strong>Termin</strong> mit dem Betriebärztlichen Dienst, <strong>Tel.: 0681-302-3745
+  </strong>(Universität, Geb. <strong>B 8.2 </strong>, Sportmedizinisches und Sportwissenschaftliches Institut, 1.Stock)
+  zu vereinbaren.</p>
+<p>Wenn Sie an einem Bildschirmgerät arbeiten, wird ein Sehtest durchgeführt. Bringen Sie bitte alle von Ihnen benutzen
+  Sehhilfen mit.</p>
+<p><br>&nbsp;</p>
+<p>Mit freundlichen Grüßen</p>
+<p><br>___________________&nbsp;<br>Ane-Marie Oswald&nbsp;<br>(Geschäftsführerin)</p>

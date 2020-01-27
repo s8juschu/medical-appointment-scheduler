@@ -1,0 +1,96 @@
+<ul
+  class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+  id="accordionSidebar"
+>
+  <!-- Sidebar - Brand -->
+  <div class="side_top"><a
+    class="sidebar-brand d-flex align-items-center justify-content-center"
+    routerLink="/"
+  >
+    <img class="img-profile rounded-circle" src="assets/img/BAD_logo.jpeg" width="35%"/>
+    <div class="sidebar-brand-text mx-3">BäD</div>
+  </a></div>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider my-0"/>
+
+  <!-- Nav Item - Dashboard -->
+  <li class="nav-item">
+    <a class="nav-link menu-set-inactive" routerLink="/" routerLinkActive="active"
+       [routerLinkActiveOptions]="{exact: true}" id="navHome">
+      <fa-icon [icon]="faHome"></fa-icon>
+      <span>ERINNERUNGEN</span></a
+    >
+  </li>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider"/>
+
+  <!-- Heading -->
+  <div class="sidebar-heading">
+  </div>
+
+  <!-- Nav Item - Pages Collapse Menu -->
+
+  <li class="nav-item">
+    <a class="nav-link menu-set-inactive" routerLink="/termine" routerLinkActive="active"
+       [routerLinkActiveOptions]="{exact: true}" id="navTermin">
+      <fa-icon [icon]="faCalendar"></fa-icon>
+      <span>ALLE TERMINE</span>
+    </a>
+  </li>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider"/>
+
+  <!-- Nav Item - Utilities Collapse Menu -->
+
+  <li class="nav-item">
+    <a class="nav-link menu-set-inactive" routerLink="/mitarbeiter" routerLinkActive="active" id="navEmployee">
+      <fa-icon [icon]="faUser"></fa-icon>
+      <span>MITARBEITER</span>
+    </a>
+  </li>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider"/>
+
+  <!-- Nav Item - Tables -->
+  <li class="nav-item">
+    <a class="nav-link menu-set-inactive" routerLink="/anschreiben" routerLinkActive="active" id="navLetter">
+      <fa-icon [icon]="faFileAlt"></fa-icon>
+      <span>ANSCHREIBEN</span>
+    </a>
+  </li>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider"/>
+
+  <!-- Nav Item - Pages Collapse Menu -->
+  <li class="nav-item">
+    <a class="nav-link menu-set-inactive" routerLink="/archiv" routerLinkActive="active" id="navArchive">
+      <fa-icon [icon]="faArchive"></fa-icon>
+      <span>ARCHIV</span>
+    </a>
+  </li>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider"/>
+
+  <!-- Nav Item - Tables -->
+  <li class="nav-item">
+    <a class="nav-link menu-set-inactive" href="http://127.0.0.1:8000/admin" id="navManage">
+      <fa-icon [icon]="faCog"></fa-icon>
+      <span>VERWALTUNG</span>
+    </a>
+  </li>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider d-none d-md-block"/>
+
+  <!-- Sidebar Toggler (Sidebar) -->
+  <!--  <div class="text-center d-none d-md-inline">-->
+  <!--&lt;!&ndash;    <button class="rounded-circle border-0" id="sidebarToggle"><fa-icon [icon]="faCog"></fa-icon></button>&ndash;&gt;-->
+  <!--    <button type="button" class="btn btn-primary btn-circle"><fa-icon class="fa-icon_center" [icon]="faAngleLeft" id="navLeft" ></fa-icon></button>-->
+  <!--  </div>-->
+</ul>

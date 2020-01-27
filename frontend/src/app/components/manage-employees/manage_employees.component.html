@@ -1,0 +1,913 @@
+<div id="wrapper">
+  <app-sidebar></app-sidebar>
+
+  <div id="content-wrapper" class="d-flex flex-column">
+    <!-- Main Content -->
+    <div id="content">
+      <!-- Topbar -->
+      <app-topbar></app-topbar>
+      <!-- Begin Page Content -->
+      <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="row">
+          <div class="col-sm-10">
+            <div
+              class="d-sm-flex align-items-center justify-content-between mb-4"
+            >
+              <h1 class="h3 mb-0 text-gray-800">Mitarbeiterverwaltung</h1>
+            </div>
+
+            <div class="form-check form-check-inline">
+              <input
+                #herrRadio
+                class="form-check-input"
+                type="radio"
+                name="inlineRadioOptions"
+                id="verwaltenGenderM"
+                value="männlich"
+                [checked]="employee.gender == 'männlich'"
+                (click)="employee.gender = 'männlich'"
+                required
+                [disabled]="isArchiveMode()"
+              />
+              <label class="form-check-label" for="verwaltenGenderM">
+                Herr
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                #frauRadio
+                class="form-check-input"
+                type="radio"
+                name="inlineRadioOptions"
+                id="verwaltenGenderF"
+                value="weiblich"
+                [checked]="employee.gender == 'weiblich'"
+                (click)="employee.gender = 'weiblich'"
+                required
+                [disabled]="isArchiveMode()"
+              />
+              <label class="form-check-label" for="verwaltenGenderF">
+                Frau
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                #diversRadio
+                class="form-check-input"
+                type="radio"
+                name="inlineRadioOptions"
+                id="verwaltenGenderD"
+                value="divers"
+                [checked]="employee.gender == 'divers'"
+                (click)="employee.gender = 'divers'"
+                required
+                [disabled]="isArchiveMode()"
+              />
+              <label class="form-check-label" for="verwaltenGenderD">
+                Divers
+              </label>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-6">
+                <div class="row">
+                  <label for="staticVorname" class="col-sm-4 col-form-label">
+                    <b>Vorname</b>
+                  </label>
+                  <div class="col-sm-8">
+                    <input
+                      #firstNameInput
+                      type="text"
+                      class="form-control"
+                      id="staticVorname"
+                      [value]="employee.first_name ? employee.first_name : ''"
+                      (change)="employee.first_name = firstNameInput.value"
+                      required
+                      [disabled]="isArchiveMode()"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="row">
+                  <label for="staticNachname" class="col-sm-4 col-form-label">
+                    <b>Nachname</b>
+                  </label>
+                  <div class="col-sm-8">
+                    <input
+                      #lastNameInput
+                      type="text"
+                      class="form-control"
+                      id="staticNachname"
+                      [value]="employee.last_name ? employee.last_name : ''"
+                      (change)="employee.last_name = lastNameInput.value"
+                      required
+                      [disabled]="isArchiveMode()"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="staticGebDatum" class="col-sm-2 col-form-label">
+                <b>Geburtsdatum</b>
+              </label>
+              <div class="col-sm-10">
+                <div class="input-group">
+                  <input
+                    #dateOfBirthInput
+                    id="staticGebDatum"
+                    [value]="
+                      employee.date_of_birth ? employee.date_of_birth : ''
+                    "
+                    (dateSelect)="
+                      employee.date_of_birth = dateOfBirthInput.value
+                    "
+                    (input)="employee.date_of_birth = dateOfBirthInput.value"
+                    class="form-control"
+                    placeholder="{{ datePlaceholder }}"
+                    name="dp"
+                    ngbDatepicker
+                    #dp2="ngbDatepicker"
+                    required
+                    [minDate]="{ year: 1900, month: 1, day: 1 }"
+                    [startDate]="{ year: 1990, month: 1, day: 1 }"
+                    [disabled]="isArchiveMode()"
+                  />
+                  <div class="input-group-append">
+                    <button
+                      class="btn btn-outline-secondary calendar"
+                      (click)="dp2.toggle()"
+                      type="button"
+                      [disabled]="isArchiveMode()"
+                    >
+                      <fa-icon [icon]="faCalendar"></fa-icon>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-sm-6">
+                <div class="row">
+                  <label for="staticEinDatum" class="col-sm-4 col-form-label">
+                    <b>Eintrittsdatum</b>
+                  </label>
+                  <div class="col-sm-8">
+                    <div class="input-group">
+                      <input
+                        #dateOfEntryInput
+                        id="staticEinDatum"
+                        class="form-control"
+                        placeholder="{{ datePlaceholder }}"
+                        [value]="
+                          employee.date_of_entry ? employee.date_of_entry : ''
+                        "
+                        (dateSelect)="
+                          employee.date_of_entry = dateOfEntryInput.value
+                        "
+                        (input)="
+                          employee.date_of_entry = dateOfEntryInput.value
+                        "
+                        name="dp"
+                        ngbDatepicker
+                        [minDate]="{ year: 1900, month: 1, day: 1 }"
+                        #dp3="ngbDatepicker"
+                        required
+                        [disabled]="isArchiveMode()"
+                      />
+                      <div class="input-group-append">
+                        <button
+                          class="btn btn-outline-secondary calendar"
+                          (click)="dp3.toggle()"
+                          type="button"
+                          [disabled]="isArchiveMode()"
+                        >
+                          <fa-icon [icon]="faCalendar"></fa-icon>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="row">
+                  <label for="staticAusDatum" class="col-sm-4 col-form-label"
+                    ><b>Austrittsdatum</b></label
+                  >
+                  <div class="col-sm-8">
+                    <div class="input-group">
+                      <input
+                        #dateOfExitInput
+                        id="staticAusDatum"
+                        class="form-control"
+                        placeholder="{{ datePlaceholder }}"
+                        [value]="
+                          employee.date_of_exit ? employee.date_of_exit : ''
+                        "
+                        (dateSelect)="
+                          employee.date_of_exit = dateOfExitInput.value
+                        "
+                        (input)="employee.date_of_exit = dateOfExitInput.value"
+                        name="dp"
+                        ngbDatepicker
+                        [minDate]="{ year: 1900, month: 1, day: 1 }"
+                        #dp="ngbDatepicker"
+                        [disabled]="isArchiveMode()"
+                      />
+                      <div class="input-group-append">
+                        <button
+                          class="btn btn-outline-secondary calendar"
+                          (click)="dp.toggle()"
+                          type="button"
+                          [disabled]="isArchiveMode()"
+                        >
+                          <fa-icon [icon]="faCalendar"></fa-icon>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="staticPerNum" class="col-sm-2 col-form-label"
+                ><b>Personalnummer</b></label
+              >
+              <div class="col-sm-10">
+                <input
+                  #employeeIdInput
+                  type="text"
+                  class="form-control"
+                  id="staticPerNum"
+                  [value]="employee.employee_id ? employee.employee_id : ''"
+                  (change)="employee.employee_id = employeeIdInput.value"
+                  required
+                  [disabled]="isArchiveMode()"
+                />
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="staticAbteilung" class="col-sm-2 col-form-label"
+                ><b>Abteilung</b></label
+              >
+              <div class="col-sm-8" >
+                <div ngbDropdown class="" >
+                  <select
+                    #mydropdown
+                    required
+                    class=" form-control selectpicker"
+                    id="staticAbteilung"
+                    [disabled]="isArchiveMode()"
+                    (change)="setDepartment(mydropdown.value)"
+
+                  >
+                    <option [selected]="!employee.department" value="0" disabled
+                      >Bitte Abteilung auswählen</option
+                    >
+                    <option
+                      *ngFor="let department of departments"
+                      [selected]="department.id == employee.department"
+                      [value]="department.id"
+                    >
+                      {{ department.name }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <button
+                  type="button"
+                  class="btn"
+                  (click)="newAbteilungModal(newContent)"
+                  id="newAbteilung"
+                  [disabled]="isArchiveMode()"
+                >
+                  <fa-icon [icon]="faPlus" class="buttonNew fa-lg"></fa-icon>
+                </button>
+                <button
+                  type="button"
+                  class="btn"
+                  (click)="deleteAbteilungModal(deleteAbteilungContent)"
+                  id="removeAbteilung"
+                  [disabled]="isArchiveMode()"
+                >
+                  <fa-icon
+                    [icon]="faTimes"
+                    class="buttonDelete fa-lg"
+                  ></fa-icon>
+                </button>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-sm-4">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <p class="col-form-label"><b>Termin erwünscht</b></p>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-check form-check-inline">
+                      <input
+                          #wantsReminderInput
+                          class="form-check-input"
+                          type="radio"
+                          name="inlineRadioOptions1"
+                          id="erinnerungJa"
+                          value="option1"
+                          required
+                          [checked]="employee.wants_reminder == true"
+                          (click)="employee.wants_reminder = true"
+                          [disabled]="isArchiveMode()"
+                      />
+                      <label class="form-check-label" for="erinnerungJa">ja</label>
+                    </div>
+                    <div class="form-check form-check-inline col-form-label">
+                      <input
+                          #wantsNoReminderInput
+                          class="form-check-input"
+                          type="radio"
+                          name="inlineRadioOptions1"
+                          id="erinnerungNein"
+                          value="option2"
+                          required
+                          (click)="employee.wants_reminder = 0"
+                          [checked]="employee.wants_reminder == 0"
+                          [disabled]="isArchiveMode()"
+                      />
+                      <label class="form-check-label" for="erinnerungNein"
+                        >nein</label
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-8">
+                <div class="row">
+                  <label
+                    for="staticTurnus"
+                    class="col-sm-4 col-form-label"
+                    style="text-align: right"
+                    ><b>Turnus Erinnerung</b></label
+                  >
+                  <div class="col-sm-4">
+                    <input
+                      #employeeTurnusInput
+                      type="text"
+                      class="form-control"
+                      id="staticTurnus"
+                      placeholder="x"
+                      [value]="
+                        employee.reminder_interval
+                          ? employee.reminder_interval
+                          : ''
+                      "
+                      (change)="
+                        employee.reminder_interval = employeeTurnusInput.value
+                      "
+                      [disabled]="isArchiveMode()"
+                      required
+                    />
+                  </div>
+
+                  <div class="col-sm-4 col-form-label">
+                    <p>Monate</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <div class="row">
+                  <label
+                    for="staticNextReminder"
+                    class="col-sm-2 col-form-label"
+                  >
+                    <b>Nächste Erinnerung</b>
+                  </label>
+                  <div class="col-sm-10">
+                    <div class="input-group">
+                      <input
+                        #dateOfNextReminder
+                        id="staticNextReminder"
+                        class="form-control"
+                        placeholder="{{ datePlaceholder }}"
+                        [value]="
+                          employee.next_reminder ? employee.next_reminder : ''
+                        "
+                        (dateSelect)="
+                          employee.next_reminder = dateOfNextReminder.value
+                        "
+                        (input)="
+                          employee.next_reminder = dateOfNextReminder.value
+                        "
+                        name="dp"
+                        ngbDatepicker
+                        [minDate]="{ year: 1990, month: 1, day: 1 }"
+                        #dp4="ngbDatepicker"
+                        [disabled]="isArchiveMode()"
+                      />
+                      <div class="input-group-append">
+                        <button
+                          class="btn btn-outline-secondary calendar"
+                          (click)="dp4.toggle()"
+                          type="button"
+                          [disabled]="isArchiveMode()"
+                        >
+                          <fa-icon [icon]="faCalendar"></fa-icon>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="verwaltenNote"><b>Notizen</b></label>
+              <textarea
+                #notesInput
+                class="form-control"
+                id="verwaltenNote"
+                rows="2"
+                [value]="employee.notes ? employee.notes : ''"
+                (change)="employee.notes = notesInput.value"
+                [disabled]="isArchiveMode()"
+              >
+              </textarea>
+            </div>
+
+            <br />
+
+            <div class="form-group">
+              <div class="form-group">
+                <label for="newTermin"><b>Termin-Übersicht</b></label>
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  (click)="newAppointmentModal(newAppointmentContent)"
+                  style="float: right"
+                  id="newTermin"
+                  [disabled]="isCreationMode() || isArchiveMode()"
+                >
+                  Neuer Termin
+                </button>
+              </div>
+              <p *ngFor="let appointment of appointments">
+                {{ appointment.date }}
+                <button
+                  type="button"
+                  class="btn"
+                  (click)="deleteAppointment(deleteTermin, appointment.id)"
+                  id="deleteAppointment"
+                  [disabled]="isArchiveMode()"
+                >
+                  <fa-icon
+                    [icon]="faTimes"
+                    class="buttonDelete fa-lg"
+                  ></fa-icon>
+                </button>
+              </p>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div style="float:right;">
+              <button
+                type="button"
+                class="btn btn-success buttonVerwaltung"
+                (click)="saveModal(saveContent)"
+                id="verwaltenSave"
+                *ngIf="isCreationMode() || isUpdateMode()"
+              >
+                Speichern
+              </button>
+              <br />
+              <button
+                type="button"
+                class="btn btn-info buttonVerwaltung"
+                (click)="generateModal(generateContent, employee.id)"
+                id="generate"
+                *ngIf="isUpdateMode()"
+              >
+                Anschreiben
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger buttonVerwaltung"
+                (click)="deleteModal(deleteContent)"
+                id="verwaltenDelete"
+                *ngIf="isUpdateMode() || isArchiveMode()"
+              >
+                Löschen
+              </button>
+              <br />
+              <button
+                type="button"
+                class="btn btn-secondary buttonVerwaltung"
+                (click)="archiveModal(archiveContent)"
+                id="verwaltenArchivieren"
+                *ngIf="isUpdateMode()"
+              >
+                Archivieren
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary buttonVerwaltung"
+                (click)="dearchiveModal(dearchiveContent)"
+                id="verwaltenRedo"
+                *ngIf="isArchiveMode()"
+              >
+                Wiederherstellen
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- /.container-fluid -->
+  </div>
+  <!-- End of Main Content -->
+</div>
+
+<ng-template #saveContent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-title-save">Mitarbeiter speichern</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      id="verwaltenModalSaveCross"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Wollen Sie diesen Mitarbeiter speichern?</p>
+  </div>
+  <div class="modal-footer">
+    <button
+      id="verwaltenModalSaveNein"
+      type="button"
+      class="btn btn-sm btn-outline-danger"
+      (click)="modal.dismiss('Cross click')"
+    >
+      Nein
+    </button>
+    <button
+      id="verwaltenModalSaveJa"
+      type="button"
+      ngbAutofocus
+      class="btn btn-sm btn-outline-success"
+      (click)="modal.close()"
+    >
+      Ja
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #deleteContent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-title-delete">Mitarbeiter löschen</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      id="verwaltenModalDeleteCross"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Wollen Sie diesen Mitarbeiter löschen?</p>
+  </div>
+  <div class="modal-footer">
+    <button
+      id="verwaltenModalDeleteNein"
+      type="button"
+      class="btn btn-sm btn-outline-danger"
+      (click)="modal.dismiss('Cross click')"
+    >
+      Nein
+    </button>
+    <button
+      id="verwaltenModalDeleteJa"
+      type="button"
+      ngbAutofocus
+      class="btn btn-sm btn-outline-success"
+      (click)="modal.close()"
+    >
+      Ja
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #archiveContent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-title-archive">
+      Mitarbeiter archivieren
+    </h4>
+    <button
+      id="verwaltenModalArchCross"
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Wollen Sie diesen Mitarbeiter archivieren?</p>
+  </div>
+  <div class="modal-footer">
+    <button
+      id="verwaltenModalArchNein"
+      type="button"
+      class="btn btn-sm btn-outline-danger"
+      (click)="modal.dismiss('Cross click')"
+    >
+      Nein
+    </button>
+    <button
+      id="verwaltenModalArchJa"
+      type="button"
+      ngbAutofocus
+      class="btn btn-sm btn-outline-success"
+      (click)="modal.close('Save click')"
+    >
+      Ja
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #dearchiveContent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-title-dearchive">
+      Mitarbeiter wiederherstellen
+    </h4>
+    <button
+      id="verwaltenModalDeArchCross"
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Wollen Sie diesen Mitarbeiter wiederherstellen?</p>
+  </div>
+  <div class="modal-footer">
+    <button
+      id="verwaltenModalDeArchNein"
+      type="button"
+      class="btn btn-sm btn-outline-danger"
+      (click)="modal.dismiss('Cross click')"
+    >
+      Nein
+    </button>
+    <button
+      id="verwaltenModalDeArchJa"
+      type="button"
+      ngbAutofocus
+      class="btn btn-sm btn-outline-success"
+      (click)="modal.close('Save click')"
+    >
+      Ja
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #newAppointmentContent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-title-newApp">Neuer Termin</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      id="verwaltenModalNewCross"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group row">
+      <label for="staticNewApp" class="col-sm-2 col-form-label"
+        ><b>Datum</b></label
+      >
+      <div class="input-group">
+        <input
+          id="verwaltenModalNewInput"
+          #appointmentDate
+          id="staticNewApp"
+          class="form-control"
+          placeholder="{{ datePlaceholder }}"
+          name="dp"
+          ngbDatepicker
+          #dp2="ngbDatepicker"
+        />
+        <div class=" input-group-append">
+          <button
+            id="verwaltenModalNewDate"
+            class="btn btn-outline-secondary calendar"
+            (click)="dp2.toggle()"
+            type="button"
+          >
+            <fa-icon [icon]="faCalendar"></fa-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button
+      id="verwaltenModalNewSave"
+      type="button"
+      ngbAutofocus
+      class="btn btn-sm btn-outline-success"
+      (click)="modal.close(appointmentDate.value)"
+    >
+      Speichern
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #newContent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-title-newAbteilung">
+      Neue Abteilung hinzufügen
+    </h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      id="newAbteilungModalNewCross"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group row">
+      <label for="newAbteilungName" class="col-sm-2 col-form-label"
+        ><b>Name:</b></label
+      >
+      <div class="input-group">
+        <input
+          id="newAbteilungModalNewInput"
+          #newdepartment
+          id="newAbteilungName"
+          class="form-control"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button
+      id="newAbteilungModalNewSave"
+      type="button"
+      ngbAutofocus
+      class="btn btn-sm btn-outline-success"
+      (click)="modal.close(newdepartment.value)"
+    >
+      Speichern
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #deleteAbteilungContent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-title-deleteAbteilung">
+      Abteilung löschen
+    </h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      id="deleteAbteilungModalNewCross"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Zu löschende Abteilung:</p>
+    <div class="form-group row">
+      <div ngbDropdown class="">
+        <select
+          class=" form-control selectpicker"
+          id="staticdeleteAbteilung"
+          [(ngModel)]="selectedOption"
+          [disabled]="isArchiveMode()"
+        >
+          <option [selected]="!employee.department" disabled
+            >Bitte Abteilung auswählen</option
+          >
+          <option
+            *ngFor="let department of departments"
+            value=" {{ department.id }}"
+          >
+            {{ department.name }}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button
+      id="deleteAbteilungModalNewSave"
+      type="button"
+      ngbAutofocus
+      class="btn btn-sm btn-outline-danger"
+      (click)="modal.close()"
+    >
+      Löschen
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #deleteTermin let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-title-deleteTermin">Termin löschen</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      id="verwaltenModalDeleteTerminCross"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Wollen Sie diesen Termin löschen?</p>
+  </div>
+  <div class="modal-footer">
+    <button
+      id="verwaltenModalDeleteTerminNein"
+      type="button"
+      class="btn btn-sm btn-outline-danger"
+      (click)="modal.dismiss('Cross click')"
+    >
+      Nein
+    </button>
+    <button
+      id="verwaltenModalDeleteTerminJa"
+      type="button"
+      ngbAutofocus
+      class="btn btn-sm btn-outline-success"
+      (click)="modal.close()"
+    >
+      Ja
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #generateContent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-home-generate">
+      Anschreiben generieren
+    </h4>
+    <button
+      id="modalCross"
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Wollen Sie das Anschreiben für diesen Mitarbeiter generieren?</p>
+  </div>
+  <div class="modal-footer">
+    <button
+      id="modalNein"
+      type="button"
+      class="btn btn-sm btn-outline-info"
+      (click)="modal.dismiss()"
+    >
+      Nein
+    </button>
+    <button
+      id="modalJa"
+      type="button"
+      ngbAutofocus
+      class="btn btn-sm btn-outline-primary"
+      (click)="modal.close('Save click')"
+    >
+      Ja
+    </button>
+  </div>
+</ng-template>

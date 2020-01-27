@@ -1,0 +1,55 @@
+<nav
+  class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
+>
+  <div class="login-main-text">
+    <img class="img-profile" src="assets/img/BAD_logo.jpeg" width="35%" />
+    <h1>Terminverwaltung Betriebsärtztlicher Dienst</h1>
+  </div>
+</nav>
+
+<div class="fixed-bottom alert-style">
+  <p *ngFor="let alert of alerts">
+    <ngb-alert [type]="alert.type" (close)="close(alert)">{{
+      alert.message
+      }}</ngb-alert>
+  </p>
+</div>
+
+<div class="main">
+  <div class="col-md-6 col-sm-12">
+    <div class="login-form">
+      <h2>Bitte einloggen</h2>
+      <form (submit)="login(username.value, password.value)">
+        <div class="form-group">
+          <div></div>
+          <input
+            #username
+            id="loginUsername"
+            type="text"
+            class="form-control form-control-lg"
+            placeholder="E-Mail"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            #password
+            id="loginPswd"
+            type="password"
+            class="form-control form-control-lg"
+            placeholder="Passwort"
+          />
+        </div>
+        <div>
+          <button type="submit" class="btn btn-blue btn-lg" id="loginSubmit">
+            LOGIN
+          </button>
+        </div>
+<!--        <div>-->
+<!--          <a id="loginForgot" href="#" style="color: #fff"-->
+<!--            >Passwort vergessen?</a-->
+<!--          >-->
+<!--        </div>-->
+      </form>
+    </div>
+  </div>
+</div>

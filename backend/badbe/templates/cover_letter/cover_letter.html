@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <!-- first element so that the encoding is applied to the title etc. -->
+  <title>Betreff: Termin für eine arbeitsmedizinische Nachuntersuchung</title>
+  <style type="text/css">
+    body {
+      margin: 1.6 rem 2 rem 0.6 rem 2 rem;
+      font-size: 1.5 em;
+      font-family: sans-serif;
+    }
+
+    header {
+      height: 200px;
+      margin-bottom: 50px;
+    }
+
+    .main address {
+      font-style: normal;
+      text-align: left;
+    }
+
+    .content {
+      display: flex;
+    }
+
+    address {
+      word-wrap: break-word;
+      white-space: pre-line;
+    }
+
+    time {
+      display: block;
+      float: right;
+      text-align: right;
+    }
+
+    hr {
+      text-align: left;
+    }
+
+    .greets {
+      margin-top: 115px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <p><u>PERSÖNLICH/PERSONALSACHE</u></p>
+    <br />
+    <br />
+    <div class="return-address">
+      <div>
+          {{ employee.first_name }} {{ employee.last_name }}
+        <br />
+        Abteilung: {{ employee.department }}
+      </div>
+    </div>
+
+    <time class="date">Datum: {{ today | date:"d.m.Y" }}</time>
+  </header>
+
+  <br />
+  <br />
+  <br />
+
+  <h1>
+      Betreff: Termin für eine arbeitsmedizinische Untersuchung
+  </h1>
+
+  <br />
+  <br />
+
+  <div class="content">
+    <!-- use this div only if it is required for styling -->
+    <div>
+        Guten Tag, {{ employee.first_name }} {{ employee.last_name }},
+      <br />
+
+      <p>
+        aufgrund Ihrer dienstlichen Tätigkeiten ist eine arbeitsmedizinische
+        Vorsorgeuntersuchung erforderlich. Diese Untersuchung dient
+        insbesondere Ihrer Gesundheitsvorsorge und ist u.a. nach den
+        Unfallverhütungsvorschriften bzw. der Bildschirmarbeitsplatzverordung
+        vorgeschrieben.
+      </p>
+
+      <p>
+        Die arbeitsmedizinische Untersuchung und Beratung wird vom
+        Betriebarzt, Herrn Prof. Dr. Lothar Schwarz, durchgeführt. Die Inhalte
+        und Ergebnisse obliegen selbstversändlich der Schweigepflicht.
+      </p>
+
+      <p>
+        Wir bitten Sie, einen <b>Termin</b> mit dem Betriebärztlichen Dienst,
+        <b>Tel.: 0681-302-3745 </b>(Universität, Geb. <b>B 8.2 </b>,
+        Sportmedizinisches und Sportwissenschaftliches Institut, 1.Stock) zu
+        vereinbaren.
+      </p>
+
+      <p>
+        Wenn Sie an einem Bildschirmgerät arbeiten, wird ein Sehtest
+        durchgeführt. Bringen Sie bitte alle von Ihnen benutzen Sehhilfen mit.
+      </p>
+    </div>
+  </div>
+  <br />
+  <div>
+    <p>
+      Mit freundlichen Grüßen
+    </p>
+    <br />
+    ___________________
+    <br />
+      Anne-Marie Oswald
+    <br />
+    (Geschäftsführerin)
+  </div>
+</body>
+
+</html>

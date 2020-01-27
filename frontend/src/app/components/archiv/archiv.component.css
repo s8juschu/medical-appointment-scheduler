@@ -1,0 +1,13 @@
+.employeeRow {
+  cursor: pointer;
+}
+
+tbody tr:hover {
+  background-color: #d5d8dc !important;
+}
+
+
+.filter{
+  border-top-right-radius: 0px!important;
+  border-bottom-right-radius: 0px!important;
+}

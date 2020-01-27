@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>SB Admin 2 - Dashboard</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="css/mycss.css" rel="stylesheet">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+</head>
+
+<body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+  <!-- Sidebar -->
+  <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="mitarbeiterverwaltung.html">
+      <div class="sidebar-brand-text mx-3">BäD</div>
+    </a>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item">
+      <a class="nav-link" href="mitarbeiterverwaltung.html">
+        <i class="fas fa-fw fa-home"></i>
+        <span>Start</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+      Menü
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+
+    <li class="nav-item">
+      <a class="nav-link" href="termin.html">
+        <i class="fas fa-fw fa-calendar"></i>
+        <span>Termine</span></a>
+    </li>
+
+
+    <!-- Nav Item - Utilities Collapse Menu -->
+
+    <li class="nav-item active">
+      <a class="nav-link" href="angestellte.html">
+        <i class="fas fa-fw fa-user"></i>
+        <span>Angestellte</span></a>
+    </li>
+
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+      <a class="nav-link" href="anschreiben.html">
+        <i class="fas fa-fw fa-file-alt"></i>
+        <span>Anschreiben</span></a>
+    </li>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+      <a class="nav-link" href="archiv.html">
+        <i class="fas fa-fw fa-archive"></i>
+        <span>Archiv</span></a>
+    </li>
+
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+      <a class="nav-link" href="verwaltung.html">
+        <i class="fas fa-fw fa-cog"></i>
+        <span>Verwaltung</span></a>
+    </li>
+
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+      <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+
+  </ul>
+  <!-- End of Sidebar -->
+
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+
+    <!-- Main Content -->
+    <div id="content">
+
+      <!-- Topbar -->
+      <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+        <!-- Sidebar Toggle (Topbar) -->
+        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+          <i class="fa fa-bars"></i>
+        </button>
+
+        <!-- Topbar Search -->
+        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+          <div class="input-group">
+            <input type="text" class="form-control bg-light border-0 small" placeholder="Suche ..."
+                   aria-label="Search" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+              <button class="btn btn-primary" type="button">
+                <i class="fas fa-search fa-sm"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <!-- Topbar Navbar -->
+        <ul class="navbar-nav ml-auto">
+
+          <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+          <li class="nav-item dropdown no-arrow d-sm-none">
+            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <!-- Dropdown - Messages -->
+            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                 aria-labelledby="searchDropdown">
+              <form class="form-inline mr-auto w-100 navbar-search">
+                <div class="input-group">
+                  <input type="text" class="form-control bg-light border-0 small"
+                         placeholder="Search for..." aria-label="Search"
+                         aria-describedby="basic-addon2">
+                  <div class="input-group-append">
+                    <button class="btn btn-primary" type="button">
+                      <i class="fas fa-search fa-sm"></i>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </li>
+
+
+          <!-- Nav Item - User Information -->
+          <li class="nav-item dropdown no-arrow">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img class="img-profile rounded-circle" src="img/user.png">
+            </a>
+            <!-- Dropdown - User Information -->
+            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                 aria-labelledby="userDropdown">
+              <a class="dropdown-item" href="#">
+                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                Profile
+              </a>
+              <a class="dropdown-item" href="#">
+                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                Settings
+              </a>
+              <div class="dropdown-divider"></div>
+              <!--              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">-->
+              <a class="dropdown-item" href="#" data-toggle="modal" (click)="false">
+                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                Logout
+              </a>
+            </div>
+          </li>
+
+        </ul>
+
+      </nav>
+      <!-- End of Topbar -->
+
+      <!-- Begin Page Content -->
+      <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="row">
+          <div class="col-sm-10">
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+              <h1 class="h3 mb-0 text-gray-800">Mitarbeiterverwaltung</h1>
+            </div>
+
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                     value="option1">
+              <label class="form-check-label" for="inlineRadio1">Herr</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                     value="option2">
+              <label class="form-check-label" for="inlineRadio2">Frau</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                     value="option2">
+              <label class="form-check-label" for="inlineRadio2">Divers</label>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-6">
+                <div class="row" style="">
+                  <label for="staticVorname" class="col-sm-4 col-form-label"><b>Vorname</b></label>
+                  <div class="col-sm-8">
+                    <input type="text" readonly class="form-control" id="staticVorname" value="Max">
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="row">
+                  <label for="staticNachname" class="col-sm-4 col-form-label"><b>Nachname</b></label>
+                  <div class="col-sm-8">
+                    <input type="text" readonly class="form-control" id="staticNachname" value="Mustermann">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="staticGebDatum" class="col-sm-2 col-form-label"><b>Geburtsdatum</b></label>
+              <div class="col-sm-10">
+                <input type="text" readonly class="form-control" id="staticGebDatum" value="01.01.1900">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-sm-6">
+                <div class="row">
+                  <label for="staticEinDatum" class="col-sm-4 col-form-label"><b>Eintrittsdatum</b></label>
+                  <div class="col-sm-8">
+                    <input type="text" readonly class="form-control" id="staticEinDatum" value="01.01.2008">
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="row">
+                  <label for="staticAusDatum" class="col-sm-4 col-form-label"><b>Austrittsdatum</b></label>
+                  <div class="col-sm-8">
+                    <input type="text" readonly class="form-control" id="staticAusDatum" value="01.01.2010">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="staticPerNum" class="col-sm-2 col-form-label"><b>Personalnummer</b></label>
+              <div class="col-sm-10">
+                <input type="text" readonly class="form-control" id="staticPerNum" value="1234">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="staticAbteilung" class="col-sm-2 col-form-label"><b>Abteilung</b></label>
+              <div class="col-sm-10">
+                <input type="text" readonly class="form-control" id="staticAbteilung" value="Küche">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-sm-2">
+                <p><b>Termin erwünscht</b></p>
+              </div>
+              <div class="col-sm-5">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="erinnerungJa"
+                         value="option1">
+                  <label class="form-check-label" for="inlineRadio1">ja</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="erinnerungNein"
+                         value="option2">
+                  <label class="form-check-label" for="inlineRadio2">nein</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="staticTurnus" class="col-sm-2 col-form-label"><b>Turnus Erinnerung</b></label>
+              <div class="col-sm-10">
+                <input type="text" readonly class="form-control" id="staticTurnus" value="2 Jahre">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div style="float:right;">
+              <button type="button" class="btn btn-success buttonVerwaltung" id="save">Speichern</button>
+              <br>
+              <button type="button" class="btn btn-info buttonVerwaltung" id="generate">Generieren</button>
+              <br>
+              <button type="button" class="btn btn-danger buttonVerwaltung" id="delete">Löschen</button>
+              <br>
+              <button type="button" class="btn btn-secondary buttonVerwaltung" id="archivieren">Archivieren</button>
+            </div>
+          </div>
+        </div>
+
+        <br>
+
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1"><b>Notizen</b></label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+        </div>
+
+        <br>
+
+        <div class="form-group">
+          <div class="form-group">
+            <label for="termin1"><b>Termin-Übersicht</b></label>
+            <button type="button" class="btn btn-secondary" style="float: right" id="newTermin">Neuer Termin
+            </button>
+          </div>
+          <input type="text" class="form-control" id="termin1" placeholder="Januar 2017">
+          <input type="text" class="form-control" id="termin2" placeholder="September 2017">
+          <input type="text" class="form-control" id="termin3" placeholder="Dezember 2019">
+        </div>
+
+      </div>
+    </div>
+
+    <!-- /.container-fluid -->
+
+  </div>
+  <!-- End of Main Content -->
+
+
+</div>
+<!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+  <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        <a class="btn btn-primary" href="#\">Logout</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin-2.min.js"></script>
+
+<!-- Page level plugins -->
+<script src="vendor/chart.js/Chart.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="js/demo/chart-area-demo.js"></script>
+<script src="js/demo/chart-pie-demo.js"></script>
+
+</body>
+
+</html>

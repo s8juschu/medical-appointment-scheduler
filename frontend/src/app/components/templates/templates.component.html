@@ -1,0 +1,56 @@
+<div id="wrapper">
+  <app-sidebar></app-sidebar>
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+    <!-- Main Content -->
+    <div id="content">
+      <!-- Topbar -->
+      <app-topbar></app-topbar>
+      <!-- Begin Page Content -->
+      <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="row">
+          <div class="col-sm-10">
+            <div
+              class="d-sm-flex align-items-center justify-content-between mb-4"
+            >
+              <h1 class="h3 mb-0 text-gray-800">Anschreiben</h1>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <button
+              type="button"
+              class="btn btn-success buttonVerwaltung"
+              id="templateAdd"
+              (click)="loadDetailedView(null)"
+            >
+              Hinzufügen
+            </button>
+            <br />
+          </div>
+        </div>
+
+        <br />
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Beschreibung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let template of templates"
+              (click)="loadDetailedView(template.id)"
+            >
+              <td>{{ template.name }}</td>
+              <td>{{ template.description }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

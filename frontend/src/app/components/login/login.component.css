@@ -1,0 +1,108 @@
+::ng-deep body {
+  background: #5d9dd8 !important;
+}
+
+.main-head {
+  height: 150px;
+  background: #1761ab;
+}
+
+.sidenav {
+  height: 100%;
+  background-color: #1761ab;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+
+.main {
+  padding: 10px;
+}
+
+.login-form h2 {
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+}
+
+.login-form div {
+  display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .login-form {
+    margin-top: 10%;
+  }
+
+  .register-form {
+    margin-top: 10%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .main {
+    margin-left: 40%;
+  }
+
+  .sidenav {
+    width: 30%;
+    text-align: center;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+  }
+
+  .login-form {
+    margin-top: 50%;
+    width: 60%;
+  }
+
+  .register-form {
+    margin-top: 20%;
+  }
+}
+
+.login-error-text {
+  font-weight: bold;
+  color: #fff;
+}
+
+.login-main-text {
+  display: block;
+  padding: 10px;
+  color: #1761ab;
+}
+
+.login-main-text img {
+  display: inline-block;
+  width: 7.5%;
+  padding-bottom: 15px;
+}
+
+.login-main-text h1 {
+  display: inline-block;
+  padding-left: 30px;
+  padding-top: 15px;
+  font-weight: normal;
+  font-size: 3rem;
+}
+
+.btn-blue {
+  background-color: #1761ab !important;
+  color: #fff;
+}
+
+.alert-style{
+  margin-left: 30%;
+  width: 40%;
+}

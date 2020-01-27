@@ -1,0 +1,102 @@
+<div id="wrapper">
+  <app-sidebar></app-sidebar>
+
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+    <app-topbar></app-topbar>
+    <!-- Main Content -->
+    <div id="content">
+      <!-- Begin Page Content -->
+      <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="row">
+          <div class="col-sm-10">
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+              <h1 class="h3 mb-0 text-gray-800">Erinnerungen an bevorstehende Termine</h1>
+            </div>
+            <table class="table table-striped">
+              <thead>
+              <tr>
+                <th scope="col" sortable="name">Pers. NR.</th>
+                <th scope="col" sortable="name">Vorname</th>
+                <th scope="col" sortable="name">Nachname</th>
+                <th scope="col" sortable="name">Termin</th>
+                <th></th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let employee of employees">
+                <th scope="row">{{ employee.employee_id }}</th>
+                <td>{{ employee.first_name }}</td>
+                <td>{{ employee.last_name }}</td>
+                <td>{{ employee.next_reminder }}</td>
+                <td>
+                  <button type="button" class="btn btn-success" (click)="generateModal(generateContent, employee.id)"
+                          id="generate">
+                    Anschreiben
+                  </button>
+                  <button type="button" class="btn btn-warning btnHide" (click)="hideModal(hideContent, employee)"
+                          id="hide">
+                    Verbergen
+                  </button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.container-fluid -->
+  </div>
+  <!-- End of Main Content -->
+</div>
+
+<ng-template #generateContent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-home-generate">
+      Anschreiben generieren
+    </h4>
+    <button id="modalCross" type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Wollen Sie ein Anschreiben für diesen Mitarbeiter generieren?</p>
+  </div>
+  <div class="modal-footer">
+    <button id="modalNein" type="button" class="btn btn-sm btn-outline-danger" (click)="modal.dismiss()">
+      Nein
+    </button>
+    <button id="modalJa" type="button" ngbAutofocus class="btn btn-sm btn-outline-success"
+            (click)="modal.close('Save click')">
+      Ja
+    </button>
+  </div>
+</ng-template>
+
+
+<ng-template #hideContent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-home-hide">
+      Erinnerung verbergen
+    </h4>
+    <button id="modalHideCross" type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Soll die Erinnerung für diesen Termin verborgen werden?</p>
+    <p>Die nächste Erinnerung erscheint einen Monat vor erneutem Ablauf des Terminintervalls.</p>
+  </div>
+  <div class="modal-footer">
+    <button id="modalHideNein" type="button" ngbAutofocus class="btn btn-sm btn-outline-secondarz"
+            (click)="modal.dismiss()">
+      Abbrechen
+    </button>
+    <button id="modalHideJa" type="button" class="btn btn-sm btn-outline-warning"
+            (click)="modal.close('Save click')">
+      Verbergen
+    </button>
+  </div>
+</ng-template>
