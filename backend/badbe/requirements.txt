@@ -11,7 +11,6 @@ html5lib==1.0.1
 httpie==1.0.3
 idna==2.8
 MonthDelta==0.9.1
-mysqlclient==1.4.6
 Pillow==6.2.1
 Pygments==2.5.1
 PyPDF2==1.26.0
@@ -21,7 +20,6 @@ reportlab==3.5.32
 requests==2.22.0
 selenium==3.141.0
 six==1.13.0
-sqlparse==0.3.0
 uritemplate==3.0.0
 urllib3==1.25.7
 webencodings==0.5.1
